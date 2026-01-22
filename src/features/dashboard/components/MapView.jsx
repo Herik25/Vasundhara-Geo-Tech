@@ -8,7 +8,8 @@ const blueIcon = new L.Icon({
   iconRetinaUrl:
     "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
   shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
-  iconAnchor: [12, 0],
+  iconAnchor: [12, 41],
+  popupAnchor: [0, -40],
 });
 
 const redIcon = new L.Icon({
@@ -17,7 +18,8 @@ const redIcon = new L.Icon({
   iconRetinaUrl:
     "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red-2x.png",
   shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
-  iconAnchor: [12, 0],
+  iconAnchor: [12, 41],
+  popupAnchor: [0, -40],
 });
 
 const INDIA_CENTER = [22.5937, 78.9629];
@@ -33,6 +35,24 @@ function MapView({ projects, selectedProjectId, onMarkerSelect }) {
   useEffect(() => {
     if (selectedProjectId && markerRefs.current[selectedProjectId]) {
       markerRefs.current[selectedProjectId].openPopup();
+    }
+  }, [selectedProjectId]);
+
+  useEffect(() => {
+    if (!selectedProjectId) return;
+
+    const marker = markerRefs.current[selectedProjectId];
+    const map = mapRef.current;
+
+    if (marker && map) {
+      const latLng = marker.getLatLng();
+
+      map.flyTo(latLng, map.getZoom(), {
+        animate: true,
+        duration: 0.8,
+      });
+
+      marker.openPopup();
     }
   }, [selectedProjectId]);
 
