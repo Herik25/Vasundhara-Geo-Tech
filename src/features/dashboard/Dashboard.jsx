@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useProjects } from "./hooks/useProjects";
 import { useFilters } from "./hooks/useFilters";
 import DataTable from "./components/DataTable";
@@ -11,7 +11,7 @@ function Dashboard() {
   const [pageSize, setPageSize] = useState(10);
   const [selectedProjectId, setSelectedProjectId] = useState(null);
 
-  const { projects, totalCount, loading, error } = useProjects({
+  const { projects, loading, error } = useProjects({
     page,
     pageSize,
   });
@@ -24,6 +24,12 @@ function Dashboard() {
     filteredData,
   } = useFilters(projects);
 
+  const paginatedData = useMemo(() => {
+    const start = page * pageSize;
+    const end = start + pageSize;
+    return filteredData.slice(start, end);
+  }, [filteredData, page, pageSize]);
+
   return (
     <div style={{ height: "100vh", overflow: "hidden", position: "relative" }}>
       <div
@@ -35,6 +41,7 @@ function Dashboard() {
           zIndex: 1000,
           background: "#fff",
           borderRadius: "20px",
+          minWidth: 800,
         }}
       >
         <Typography variant="h5" sx={{ mb: 2, fontWeight: 600 }}>
@@ -48,8 +55,8 @@ function Dashboard() {
         />
 
         <DataTable
-          rows={filteredData}
-          totalCount={totalCount}
+          rows={paginatedData}
+          totalCount={filteredData.length}
           page={page}
           pageSize={pageSize}
           loading={loading}
