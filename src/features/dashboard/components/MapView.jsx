@@ -1,6 +1,24 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { useRef } from "react";
 import "leaflet/dist/leaflet.css";
+import L from "leaflet";
+
+const blueIcon = new L.Icon({
+  iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
+  iconRetinaUrl:
+    "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
+  shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+  iconAnchor: [12, 0],
+});
+
+const redIcon = new L.Icon({
+  iconUrl:
+    "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png",
+  iconRetinaUrl:
+    "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red-2x.png",
+  shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+  iconAnchor: [12, 0],
+});
 
 const INDIA_CENTER = [22.5937, 78.9629];
 const INDIA_BOUNDS = [
@@ -34,7 +52,8 @@ function MapView({ projects, selectedProjectId, onMarkerSelect }) {
           eventHandlers={{
             click: () => onMarkerSelect(project.id),
           }}
-          opacity={project.id === selectedProjectId ? 1 : 0.7}
+          // opacity={project.id === selectedProjectId ? 1 : 0.7}
+          icon={project.id === selectedProjectId ? redIcon : blueIcon}
         >
           <Popup>
             <strong>{project.projectName}</strong>
