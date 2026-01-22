@@ -25,13 +25,14 @@ function DataTable({
         rows={rows}
         columns={columns}
         rowCount={totalCount}
-        page={page}
-        pageSize={pageSize}
+        loading={loading}
         pagination
         paginationMode="server"
-        onPageChange={(newPage) => onPageChange(newPage)}
-        onPageSizeChange={(newPageSize) => onPageSizeChange(newPageSize)}
-        loading={loading}
+        paginationModel={{ page, pageSize }}
+        onPaginationModelChange={(model) => {
+          onPageChange(model.page);
+          onPageSizeChange(model.pageSize);
+        }}
         getRowId={(row) => row.id}
         onRowClick={(params) => onRowSelect(params.id)}
         getRowClassName={(params) =>

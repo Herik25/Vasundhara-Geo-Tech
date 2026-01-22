@@ -7,7 +7,7 @@ import Filters from "./components/Filters";
 
 function Dashboard() {
   const [page, setPage] = useState(0);
-  const [pageSize, setPageSize] = useState(50);
+  const [pageSize, setPageSize] = useState(10);
   const [selectedProjectId, setSelectedProjectId] = useState(null);
 
   const { projects, totalCount, loading, error } = useProjects({
