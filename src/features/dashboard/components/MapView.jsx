@@ -1,5 +1,5 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 
@@ -28,6 +28,13 @@ const INDIA_BOUNDS = [
 
 function MapView({ projects, selectedProjectId, onMarkerSelect }) {
   const mapRef = useRef(null);
+  const markerRefs = useRef({});
+
+  useEffect(() => {
+    if (selectedProjectId && markerRefs.current[selectedProjectId]) {
+      markerRefs.current[selectedProjectId].openPopup();
+    }
+  }, [selectedProjectId]);
 
   return (
     <MapContainer
@@ -54,6 +61,11 @@ function MapView({ projects, selectedProjectId, onMarkerSelect }) {
           }}
           // opacity={project.id === selectedProjectId ? 1 : 0.7}
           icon={project.id === selectedProjectId ? redIcon : blueIcon}
+          ref={(ref) => {
+            if (ref) {
+              markerRefs.current[project.id] = ref;
+            }
+          }}
         >
           <Popup>
             <strong>{project.projectName}</strong>
