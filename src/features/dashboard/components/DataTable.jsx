@@ -39,6 +39,9 @@ function DataTable({
           params.id === selectedProjectId ? "selected-row" : ""
         }
         disableRowSelectionOnClick
+        style={{
+          minHeight: 632,
+        }}
       />
     </div>
   );
