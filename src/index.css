@@ -14,3 +14,7 @@
 .data-grid-wrapper .MuiDataGrid-cell {
   cursor: pointer;
 }
+
+.selected-row {
+  background-color: #f3f3f3;
+}

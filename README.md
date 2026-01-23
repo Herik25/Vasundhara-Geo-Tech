@@ -43,15 +43,15 @@ src/
 ├── data/
 │   └── projects.json        # Mock dataset
 ├── features/
-|   ├── dashboard/
-|   │   ├── components/
-|   │   │   ├── DataTable.jsx    # Tabular data view
-|   │   │   ├── MapView.jsx      # Map + markers
-|   │   │   └── Filters.jsx      # Search & status filters
-|   │   └── hooks/
-|   │       ├── useProjects.js   # Data fetching
-|   │       └── useFilters.js    # Client-side filtering logic
-|   └── Dashboard.jsx            # Main orchestrator
+│   ├── dashboard/
+│   │   ├── components/
+│   │   │   ├── DataTable.jsx    # Tabular data view
+│   │   │   ├── MapView.jsx      # Map + markers
+│   │   │   └── Filters.jsx      # Search & status filters
+│   │   └── hooks/
+│   │       ├── useProjects.js   # Data fetching
+│   │       └── useFilters.js    # Client-side filtering logic
+│   └── Dashboard.jsx            # Main orchestrator
 └── main.jsx
 └── App.jsx
 ```
@@ -140,7 +140,21 @@ For larger or real-time datasets, the architecture can be extended to server-sid
 
 ## 📸 Screenshots / Demo
 
-_(Add screenshots or a short screen recording here showing table–map interaction, filtering, and pagination.)_
+### 🌍 Interactive Geo Data Dashboard Overview
+
+![Dashboard Overview](/dashboard-overview.png)
+
+### 🔄 Table-to-Map Synchronization with Auto-Centered Focus
+
+![Table Selection](/selection-marker.png)
+
+### 🔍 Global Search & Status-Based Filtering
+
+![Map Focus](/search.png)
+
+### 🗺️ Worldwide Project Distribution
+
+![Map Focus](/all-locations.png)
 
 ---
 
