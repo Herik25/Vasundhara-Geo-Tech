@@ -142,19 +142,19 @@ For larger or real-time datasets, the architecture can be extended to server-sid
 
 ### 🌍 Interactive Geo Data Dashboard Overview
 
-![Dashboard Overview](/dashboard-overview.png)
+![Dashboard Overview](public/dashboard-overview.png)
 
 ### 🔄 Table-to-Map Synchronization with Auto-Centered Focus
 
-![Table Selection](/selection-marker.png)
+![Table Selection](public/selection-marker.png)
 
 ### 🔍 Global Search & Status-Based Filtering
 
-![Map Focus](/search.png)
+![Map Focus](public/search.png)
 
 ### 🗺️ Worldwide Project Distribution
 
-![Map Focus](/all-locations.png)
+![Map Focus](public/all-locations.png)
 
 ---
 
