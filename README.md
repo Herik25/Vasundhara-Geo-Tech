@@ -5,6 +5,7 @@
 ![MUI](https://img.shields.io/badge/MUI-007FFF?style=for-the-badge&logo=mui&logoColor=white)
 ![Leaflet](https://img.shields.io/badge/Leaflet-199900?style=for-the-badge&logo=leaflet&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-green)](https://vasundhara-geo-tech.vercel.app/)
 
 A high-performance **React-based Geo Data Dashboard** that visualizes spatial and tabular project data with **synchronized interactions** between a data table and an interactive map.
 
