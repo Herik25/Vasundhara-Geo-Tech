@@ -4,8 +4,9 @@ import { useFilters } from "./hooks/useFilters";
 import DataTable from "./components/DataTable";
 import MapView from "./components/MapView";
 import Filters from "./components/Filters";
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import StatCard from "./components/StatCard";
+import { dashboardStyles as styles } from "./dashboard.styles";
 
 function Dashboard() {
   const [page, setPage] = useState(0);
@@ -32,52 +33,21 @@ function Dashboard() {
   }, [filteredData, page, pageSize]);
 
   return (
-    <div
-      style={{
-        height: "100vh",
-        overflow: "hidden",
-        display: "grid",
-        gridTemplateColumns: "1fr 40%",
-      }}
-    >
-      <div style={{ minWidth: 0, height: "100vh", width: "100%" }}>
+    <Box sx={styles.root}>
+      <Box sx={styles.mapContainer}>
         <MapView
           projects={filteredData}
           selectedProjectId={selectedProjectId}
           onMarkerSelect={setSelectedProjectId}
         />
-      </div>
+      </Box>
 
-      <div
-        style={{
-          padding: 12,
-          background: "#fff",
-          borderRadius: "20px",
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
-        <div
-          style={{
-            flex: 1,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            marginBottom: 16,
-          }}
-        >
-          <div style={{ marginBottom: 8 }}>
-            <Typography variant="h4" fontWeight={600}>
-              Vasundhara Geo Technologies
-            </Typography>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              gap: 16,
-              marginBottom: 4,
-            }}
-          >
+      <Box style={styles.sidePanel}>
+        <Box style={styles.headerSection}>
+          <Typography variant="h4" fontWeight={600}>
+            Vasundhara Geo Technologies
+          </Typography>
+          <Box style={styles.statsRow}>
             <StatCard label="Total Projects" value={projects.length} />
             <StatCard
               label="Active"
@@ -87,7 +57,7 @@ function Dashboard() {
               label="Inactive"
               value={projects.filter((p) => p.status === "Inactive").length}
             />
-          </div>
+          </Box>
           <div style={{ marginBottom: 4 }}>
             <Typography
               variant="body2"
@@ -98,7 +68,7 @@ function Dashboard() {
               refine results.
             </Typography>
           </div>
-        </div>
+        </Box>
 
         <React.Fragment>
           <Typography variant="h5" sx={{ mb: 2, fontWeight: 600 }}>
@@ -125,8 +95,8 @@ function Dashboard() {
 
           {error && <div>{error}</div>}
         </React.Fragment>
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }
 

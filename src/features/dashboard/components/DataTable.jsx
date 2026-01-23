@@ -20,7 +20,7 @@ function DataTable({
   ];
 
   return (
-    <div>
+    <div className="data-grid-wrapper">
       <DataGrid
         rows={rows}
         columns={columns}

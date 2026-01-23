@@ -3,3 +3,14 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.data-grid-wrapper .MuiDataGrid-cell:focus,
+.data-grid-wrapper .MuiDataGrid-cell:focus-within,
+.data-grid-wrapper .MuiDataGrid-row:focus,
+.data-grid-wrapper .MuiDataGrid-row:focus-within {
+  outline: none !important;
+}
+
+.data-grid-wrapper .MuiDataGrid-cell {
+  cursor: pointer;
+}

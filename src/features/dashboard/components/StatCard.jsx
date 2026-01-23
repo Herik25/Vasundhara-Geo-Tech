@@ -1,21 +1,14 @@
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import { dashboardStyles as styles } from "../dashboard.styles";
 
 function StatCard({ label, value }) {
   return (
-    <div
-      style={{
-        flex: 1,
-        padding: 16,
-        borderRadius: 12,
-        background: "#f8f9fb",
-        textAlign: "center",
-      }}
-    >
+    <Box style={styles.statsCardWrapper}>
       <Typography variant="h6">{value}</Typography>
       <Typography variant="body2" color="text.secondary">
         {label}
       </Typography>
-    </div>
+    </Box>
   );
 }
 
